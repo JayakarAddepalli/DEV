@@ -11,6 +11,7 @@ import JSIcon from './assets/icons8-javascript-144.png'
 import HTMLIcon from './assets/icons8-html-logo-144_n3MsJnY.png'
 import CSSIcon from './assets/icons8-css-logo-144.png'
 import reactIcon from './assets/react.png'
+import angularIcon from './assets/angular.png'
 import PyIcon from './assets/icons8-python-144_1.png'
 import DjangoIcon from './assets/icons8-django-144.png'
 import Bootstrap from './assets/bootstrap.png'
@@ -84,7 +85,7 @@ function App() {
     setInnerMouse(false)
   }
   
-  const skillsArr = [reactIcon, JSIcon, CSSIcon, HTMLIcon, PyIcon, DjangoIcon,  sql, Bootstrap]
+  const skillsArr = [angularIcon, reactIcon, JSIcon, CSSIcon, HTMLIcon, PyIcon, DjangoIcon,  sql, Bootstrap]
   const toolsArr = [vsCode, py, dataOracle, figma, git, gitHub]
 
   return (

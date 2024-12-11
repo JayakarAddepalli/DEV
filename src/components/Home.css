@@ -526,7 +526,7 @@ nav a:nth-child(6){
     z-index: -1;
     filter:grayscale(100%);
     position: relative;
-    top: 0%;
+    top: -10%;
     left: -20%; 
     /* box-shadow: 0px 20px 10px rgb(0, 213, 255); */
 }
@@ -534,33 +534,41 @@ nav a:nth-child(6){
 .backgroundLayout>img+img{
     max-width: 10%;
     max-height: 20%;
-    left: 30%
+    top: -15%;
+    left: -10%
 }
 
 .backgroundLayout>img+img+img{
     max-width: 6%;
     max-height: 11%;
-    top: 10%;
+    top: 20%;
     left: 35%;
 }
 
 .backgroundLayout>img+img+img+img{
     max-width: 5%;
     max-height: 10%;
-    top: 35%;
+    top: 40%;
     left: 35%;
 }
 
 .backgroundLayout>img+img+img+img+img{
-    max-width: 10%;
-    max-height: 20%;
-    top: -10%;
-    left: -5%;
+    max-width: 5%;
+    max-height: 10%;
+    top: 60%;
+    left: 33%;
 }
 
 .backgroundLayout>img+img+img+img+img+img{
-    max-width: 15%;
-    max-height: 30%;
-    top: -10%;
-    left: -40%;
+    max-width: 10%;
+    max-height: 25%;
+    top: -8%;
+    left: -15%;
+}
+
+.backgroundLayout>img+img+img+img+img+img+img{
+    max-width: 10%;
+    max-height: 25%;
+    top: 5%;
+    left: -5%;
 }

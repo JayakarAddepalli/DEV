@@ -2,7 +2,7 @@ import './Home.css'
 
 function SkillsSec(props){
 
-    const skillSet = ['ReactJs', 'Javascript', 'CSS', 'HTML', 'Python', 'Django', 'SQL', 'Bootstrap']
+    const skillSet = ['Angular', 'ReactJs', 'Javascript', 'CSS', 'HTML', 'Python', 'Django', 'SQL', 'Bootstrap']
     const toolsSet = ['VSCode', 'Pycharm', 'Oracle 11g', 'Figma', 'Git', 'Github']
 
     const data = props.skillsArr.map((i, index)=><p key={index}><img src={i} alt={index+'Image'}></img><span>{skillSet[index]}</span></p>)

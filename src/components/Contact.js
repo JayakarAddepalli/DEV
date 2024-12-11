@@ -8,7 +8,7 @@ function ContactSec(props){
         <>
             <div className="ContactSec" id='contact'>
                 <div>
-                    <a href='https://drive.google.com/file/d/1fSp16c09HakFl3D_VYSOre-60Xb84M9H/view' target='_blank' rel='norefferer' onMouseMove={props.handleMove} onMouseOut={props.handleOut}>Get Resume</a>
+                    <a href='https://drive.google.com/file/d/1S_yOV2P9OtE1MFdjsYIh22JMgS2wpNQW/view?usp=sharing' target='_blank' rel='norefferer' onMouseMove={props.handleMove} onMouseOut={props.handleOut}>Get Resume</a>
                 </div>
                 <p>&copy; 2024 Addepalli Jayakar</p>
                 <div>

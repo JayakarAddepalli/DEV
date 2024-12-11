@@ -4,7 +4,7 @@ import './Home.css'
 function HeroSection(props){
 
     const skillsBanner = props.skillsArr.map((i,index)=>{
-        if(index<6){
+        if(index<7){
             return <img src={i} alt='banners'></img>
         }
     }) 
