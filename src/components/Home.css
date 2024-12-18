@@ -572,3 +572,129 @@ nav a:nth-child(6){
     top: 5%;
     left: -5%;
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    cursor: pointer;
+    color: white;
+}
+
+.modal-content {
+    max-width: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(50px);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.modal-content>div{
+    padding: 5px;
+    height: auto;
+    text-align: left;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.modal-content h4 {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.close-btn {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-btn:hover {
+    background-color: #ff3333;
+}
+
+.submit-btn{
+    padding: 10px 20px;
+    background-color: #4d7fff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover{
+    background-color: #4d50ff;
+}
+
+form>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 10px 0px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.5fr 1fr;
+    cursor: pointer;
+}
+
+.modal-content>div{
+    cursor: pointer;
+}
+
+.modal-content>p+div+div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-content>p+div+div>button{
+    background-color: transparent;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    color: white;
+    border: none;
+    text-decoration: underline;
+}
+
+.modal-overlay p, label, label>b{
+    cursor: pointer;
+}
+
+input, textarea{
+    max-width: 400px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+textarea{
+    resize: none;
+}
+
+input{
+    height: 2rem;
+}
+textarea{
+    height: 5rem;
+}

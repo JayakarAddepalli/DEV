@@ -3,6 +3,8 @@ import logo from '../assets/logo.png'
 import starIcon from '../assets/star.png'
 import './Home.css'
 import menu from '../assets/menu.png'
+import FeedBackComponent from './feedback'
+import { createPortal } from 'react-dom'
 
 function Header(props){
 
@@ -40,6 +42,15 @@ function Header(props){
         };
     }, []);
 
+    const [showModel, setShowModel] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowModel(true);  // Show the modal after 5 seconds
+        }, 5000);
+
+        return () => clearTimeout(timer);  // Cleanup the timeout
+    }, []);
 
   
 
@@ -65,6 +76,11 @@ function Header(props){
                     </span>
                 </nav>
             </header>
+
+            {showModel && createPortal(
+                <FeedBackComponent onClose={() => setShowModel(false)} />,
+                document.body
+            )}
         </>
     )
 }
