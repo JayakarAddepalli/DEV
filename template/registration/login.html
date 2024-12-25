@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<form method="post" enctype="multipart/form-data" class="w-50 mx-auto">
+    {% csrf_token %}
+    <h1>Login</h1>
+    {% if messages %}
+        {% for i in messages %}
+            <div class="alert alert-danger">
+                {{i}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="mb-3">
+        <label for="" class="form-label">username</label>
+        <input type="text" name="username" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">password</label>
+        <input type="password" name="password" class="form-control">
+    </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+
+{% endblock body %}
+

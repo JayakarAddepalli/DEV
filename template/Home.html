@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<div class="mainHeader">
+    <p>Journey Through Words:<br> <span class="ele1">Explore</span>, <span class="ele2">Learn</span>,<br> <span class="ele3">Grow</span></p><br><br>
+    {% for i in hashes %}
+        <a href="{% url 'APP:category' i.title %}"><span class="hashtags"># {{i.title}}</span></a> &nbsp;&nbsp;&nbsp;
+    {% endfor %}
+</div>
+{% endblock body %}

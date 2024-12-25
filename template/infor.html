@@ -1,0 +1,146 @@
+{% extends 'main.html' %}
+
+{% block head %}
+{% load static %}
+{% endblock head %}
+{% block body %}
+<div class="d-flex justify-content-between">
+    <div class="mx-auto mainsubhead">
+        <div class="mt-5 mx-auto py-5 px-4 sideheaders subdiv1">
+            <h5 style="background-color: transparent;">CONTENTS</h5>
+            <div class="subdiv1innerdiv">
+
+                <ul class="" style="background-color: transparent;">
+                    {% for section_id, header in headers %}
+                        <li style="background-color: transparent;"><a href="#{{ section_id }}" class="anchors" id="anchors_{{section_id}}" onclick="anchoraction(id)">{{ header|safe }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="mt-5 mx-auto py-5 px-4 sideheaders subdiv2">
+            <h5 style="background-color: transparent;">POPULAR TAGS</h5>
+            {% for popularTopics in remainingTopics %}
+                <a href="{% url 'APP:information' popularTopics.id %}" class="anchors"># {{ popularTopics.topics }}</a>
+            {% endfor %}
+        </div>
+        <div class="bg-transparent" id="previousbutton">
+            
+            {% if previousTopic %}
+                <a href="{% url 'APP:information' previousTopic.id %}" class="btn btn-primary d-flex justify-content-between align-items-center"><i class="fa-solid fa-arrow-left" style="color: #ffffff; background-color: transparent;"></i> <span class="p-1" style="background-color: transparent;">{{ previousText }} </span></a>
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="w-50 mx-auto py-5">
+        <h2 id="headline">{{ infor.topics }}:</h2>
+        {% for i in d %}
+            {{ i|safe }}
+        {% endfor %}
+    </div>
+    <div class="mt-5 mx-auto mainsideheaders">
+        <div class="mx-auto py-5 px-4 sideheaders2">
+            <div class="badge bg-success border border-0 writer">writer</div>
+            <div>
+                <img src="{% static 'Birthday.jpg' %}" alt="me" class="me">
+            </div>
+            <div>
+                <h1>Jayakar Addepalli</h1>
+                <p>Python intern at ZestIOT, Hyderabad, with a solid foundation in full-stack development and a strong expertise in building scalable web applications.</p>
+                <div>
+                    <a href="https://github.com/JayakarAddepalli" class="profiles" target="_blank"><img src="{% static 'mark-github.svg' %}" alt=""></a>
+                    <a href="https://jayakaraddepalliofficial.web.app/" class="profiles" target="_blank"><img src="{% static 'person-fill.svg' %}" alt=""></a>
+                    <a href="https://www.linkedin.com/in/addepallijayakar270602/" class="profiles" target="_blank"><img src="{% static 'linkedin.svg' %}" alt=""></a>
+                </div>
+            </div>
+    
+        </div>
+        <div class="bg-transparent" id="nextbutton">
+            
+            {% if nextTopic %}
+                <a href="{% url 'APP:information' nextTopic.id %}" class="btn btn-primary d-flex justify-content-between align-items-center"><span class="p-1" style="background-color: transparent;">{{ textContent }} </span> <i class="fa-solid fa-arrow-right" style="color: #ffffff; background-color: transparent;"></i></a>
+            {% else %}
+            <span class="btn btn-transparent d-flex justify-content-between align-items-center">
+                <span class="p-2 btn btn-success">✓ {{ textContent }} </span>
+            </span>
+            {% endif %}
+            
+        </div>
+        <div class="topbutton">
+            <a href="#headline" class="bg-black p-2 border border-0 rounded"><i class="fa-solid fa-arrow-up-from-bracket" style="color: #ffffff; background-color: transparent;"></i></a>
+        </div>
+    </div>
+</div>
+<footer class="footerPart">
+    <span style="background-color: transparent;">&copy; JayakarAddepalli <span id="updateDate" style="background-color: transparent;"></span></span>
+</footer>
+<script>
+
+    // window.addEventListener('scroll',()=>{
+            
+    // })
+
+    const date = new Date()
+    document.getElementById('updateDate').textContent = date.getFullYear()
+
+    function copyToClipboard(id, button){
+        const code = document.getElementById(id).innerText;
+        console.log(code);
+        navigator.clipboard.writeText(code).then(()=>{
+            button.textContent = '✓ Copied'
+            setTimeout(()=>{
+                button.textContent = 'Copy'
+            }, 2000)
+        }).catch(err => {
+            console.error('Failed');
+        })
+    }
+
+    function anchoraction(id){
+
+        ele = document.getElementById(id)
+
+        if(!ele.textContent.includes('✓')){
+            ele.style.color = 'rgb(0, 174, 255)'
+            ele.textContent = ele.textContent + ' ✓'
+        }
+        
+    }
+
+    // Targeting Headlines data
+
+    // const headLineDate = document.getElementById('headline')
+
+    // window.addEventListener('scroll',()=>{
+    //     console.log(headLineDate.getBoundingClientRect().top);
+    // })
+
+
+    footerData = document.getElementsByClassName('footerPart')[0]
+    nextbutton = document.getElementById('nextbutton')
+
+    window.addEventListener('scroll',()=>{
+        console.log(footerData.getBoundingClientRect().top);
+
+        const topDataFooter = footerData.getBoundingClientRect().top
+
+        const topbutton = document.getElementsByClassName('topbutton')[0]
+
+        if (topDataFooter<690){
+            nextbutton.style.opacity = 1
+        } 
+        else{
+            nextbutton.style.opacity = 0
+        }
+
+        if(topDataFooter < 4000){
+            topbutton.style.opacity = 1
+        }
+        else if(topDataFooter > 4000){
+            topbutton.style.opacity = 0
+        }
+
+    })
+
+    
+</script>
+{% endblock body %}

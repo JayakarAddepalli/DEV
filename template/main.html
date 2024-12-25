@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>MyBlogs</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            max-width: 100%;
+            font-family: "Nunito Sans", sans-serif;
+            background-color: rgb(241, 241, 241);
+            user-select: none;
+            scroll-behavior: smooth;
+        }
+        .mainsubhead{
+            width: 18%;
+        }
+        .sideheaders{
+            background-color: white;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 1px grey;
+            position: sticky;
+            left: 0px;
+        }
+
+        .subdiv1innerdiv{
+            overflow: auto;
+            height: 150px;
+            background-color: transparent;
+        }
+
+        .subdiv1{
+            top: 15px;
+            /* overflow: auto; */
+        }
+
+        .subdiv2{
+            top: 330px;
+            height: fit-content;
+        }
+
+        .mainsideheaders{
+            width: 20%;
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .sideheaders2{
+            background-color: white;
+            width: 100%;
+            height: fit-content;
+            position: sticky;
+            top: 15px;
+            left: 0px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 1px grey;
+        }
+        .anchors{
+            display: block;
+            background-color: transparent;
+            color: rgb(146, 146, 146);
+            text-decoration: none;
+        }
+        .anchors:hover{
+            text-decoration: underline;
+        }
+        .anchors>h3{
+            font-size: 18px;
+            
+        }
+        pre, code, div{
+            border: none;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        code{
+            user-select:text;
+        }
+        nav{
+            max-width: 100%;
+            height: 8vh;
+            padding:0px 50px;
+            /* background-color: red; */
+            background-color: white;
+            box-shadow: 0px 1px 1px rgb(0, 0, 0);
+        }
+        .logo{
+            max-width: 3rem;
+            max-height: 3rem;
+        }
+        .mainHeader{
+            height: 90vh;
+            text-align: center;
+            align-content: space-evenly;
+        }
+        .mainHeader>p{
+            font-size: 70px;
+            font-weight: 400;
+        }
+        .ele1{
+            color: rgb(0, 132, 255); 
+            padding: 5px 15px;
+        }
+        .ele2{
+            color: rgb(162, 0, 255);
+            padding: 5px 15px;
+        }
+
+        .ele3{
+            color: rgb(221, 0, 255);
+            padding: 5px 15px;
+        }
+
+        .ele1:hover{
+            color: white;
+            transition: all 1s;
+            border: none;
+            border-radius: 12px;
+            background-color: rgb(0, 132, 255);
+            cursor: pointer;
+        }
+
+        .ele2:hover{
+            color: white;
+            transition: all 1s;
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(162, 0, 255);
+            cursor: pointer;
+        }
+
+        .ele3:hover{
+            color: white;
+            transition: all 1s;
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(221, 0, 255);
+            cursor: pointer;
+        }
+
+        .hashtags{
+            background-color: white;
+            padding: 5px 15px;
+            font-size: 15px;
+            border: solid 1px transparent;
+            border-radius: 12px;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.295);
+            cursor: pointer;
+        }
+
+        .copy-btn{
+            width: fit-content;
+            height: fit-content;
+            padding: 2px 4px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(51, 153, 255);
+            color: white;
+            font-size: 12px;
+        }
+
+        .sideheaders2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+        .me{
+            width:100px;
+            height: 100px;
+            border: none;
+            border-radius: 50%;
+            background-color: transparent;
+            pointer-events:none;
+        }
+
+        .sideheaders2>div{
+            background-color: transparent;
+            
+        }
+        .sideheaders2>div+div{
+            background-color: transparent;
+            padding: 15px;
+        }
+
+        .sideheaders2>div+div>h1{
+            font-size: 20px;
+            color: rgb(84, 84, 84);
+            font-weight: bold;
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .sideheaders2>div+div>p{
+            font-size: 14px;
+            color: rgba(84, 84, 84, 0.725);
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .sideheaders2>div+div>div, .profiles, .profiles>img{
+            background-color: transparent;
+        }
+
+        .sideheaders2>div+div>div{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .profiles>img{
+            width: 30px;
+            height: 30px;
+        }
+
+        .writer{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .card{
+            border-radius: 10px;
+        }
+
+        .card-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;   
+            border-top-left-radius: 10px !important;
+            border-top-right-radius: 10px !important;
+        }
+
+        .card-body, pre, code{
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .footerPart{
+            height: 10vh;
+            margin-top: 5vh;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nextbutton, #previousbutton{
+            transition: all 1s;
+        }
+
+        #previousbutton{
+            position: sticky;
+            top: 80%;
+        }
+
+
+
+        .topbutton{
+            position: fixed;
+            top: 80%;
+            right: 40px;
+            opacity: 0;
+        }
+
+        /* .hashtags:nth-child(4){
+            color: rgb(255, 217, 0);
+        }
+        .hashtags:nth-child(5){
+            color: rgb(255, 132, 0);
+        }
+        .hashtags:nth-child(6){
+            color: rgb(0, 170, 255);
+        }
+        .hashtags:nth-child(7){
+            color: rgb(255, 255, 0);
+        }
+        .hashtags:nth-child(8){
+            color: rgb(26, 255, 0);
+        }
+        .hashtags:nth-child(9){
+            color:  rgb(0, 170, 255);
+        }
+        .hashtags:nth-child(10){
+            color: rgb(51, 0, 255);
+        }
+        .hashtags:nth-child(11){
+            color: rgb(0, 255, 255);
+        } */
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+    <header>
+        <nav class="d-flex justify-content-between align-items-center">
+            <div>
+                <img src="{% static 'icons8-pycharm-144.png' %}" alt="" class="logo">
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                    <span style="width: auto; font-size: 20px; text-align: center; align-content: center; padding: 10px; background-color: transparent;">Hi {{user.username}}</span>
+                    <a href="{% url 'APP:logout' %}" class="btn btn-danger">Logout</a>
+                {% else %}
+                    <a href="{% url 'APP:login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'APP:register' %}" class="btn btn-secondary-subtle">Create Account</a>
+                {% endif %}
+                
+            </div>
+        </nav>
+        
+    </header>
+
+    <main>
+        {% block body %}
+            
+            
+            
+        {% endblock body %}
+
+    </main>
+</body>
+</html>
