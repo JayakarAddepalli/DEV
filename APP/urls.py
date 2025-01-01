@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(),name='logout'),
     path('', HomeView.as_view(), name='home'),
     path('<str:category>/', CategoryBlogs.as_view(), name='category'),
-    path('Python/<int:id>/', Info.as_view(), name='information')
+    path('Python/<int:id>/', Info.as_view(), name='information'),
+    path('HTML5/<int:id>/', HTMLInfo.as_view(), name='htmlInfo')
 ]

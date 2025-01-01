@@ -13,4 +13,11 @@ class PythonBlogsModel(models.Model):
     
 class TopicModel(models.Model):
     content = models.TextField()
+
+class HTMLBlogsModel(models.Model):
+    topics = models.CharField(max_length=50)
+    description = models.TextField()
+
+class HTMLTopicModel(models.Model):
+    content = models.TextField()
     
