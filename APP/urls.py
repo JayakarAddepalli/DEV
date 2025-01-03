@@ -10,5 +10,6 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('<str:category>/', CategoryBlogs.as_view(), name='category'),
     path('Python/<int:id>/', Info.as_view(), name='information'),
-    path('HTML5/<int:id>/', HTMLInfo.as_view(), name='htmlInfo')
+    path('HTML5/<int:id>/', HTMLInfo.as_view(), name='htmlInfo'),
+    path('CSS3/<int:id>/', CSSInfo.as_view(), name='cssInfo')
 ]

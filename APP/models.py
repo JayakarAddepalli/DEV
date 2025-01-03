@@ -20,4 +20,10 @@ class HTMLBlogsModel(models.Model):
 
 class HTMLTopicModel(models.Model):
     content = models.TextField()
+
+class CSSBlogsModel(models.Model):
+    topics = models.CharField(max_length=50)
+    description = models.TextField()
     
+class CSSTopicModel(models.Model):
+    content = models.TextField()

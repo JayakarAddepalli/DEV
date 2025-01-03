@@ -106,7 +106,7 @@ class CategoryBlogs(ListView):
     template_map = {
         'Python' : ('python.html', PythonBlogsModel),
         'HTML5' : ('html5.html', HTMLBlogsModel),
-        'CSS3' : ('css3.html', ),
+        'CSS3' : ('css3.html', CSSBlogsModel),
         'JS' : ('JS.html', ),
         'Django' : ('django.html', ),
         'SQL' : ('sql.html', ),
@@ -193,6 +193,52 @@ class HTMLInfo(ListView):
 
         if not previousTopic:
             previousTopic = HTMLBlogsModel.objects.filter(id=id-2).first()
+        if not previousTopic:
+            previousText = ''
+
+        # print(nextTopic)
+
+        # print(remainingTopics)
+        
+        filtered_lines = []
+        headers = []
+
+        for item in data:
+            content = markdown.markdown(item.content, extensions=['fenced_code'])
+            # Find all headers and create a unique ID
+            headers_in_content = re.findall(r'<h3>(.*?)</h3>', content)
+            for index, header in enumerate(headers_in_content):
+                section_id = f'section_{index}'
+                headers.append((section_id, header))
+                content = content.replace(f'<h3>{header}</h3>', f'<h3 id="{section_id}">{header}</h3>')
+            filtered_lines.append(content)
+
+        return render(request, 'infor.html', {'infor': infor, 'd': filtered_lines, 'headers': headers, 'remainingTopics':remainingTopics[id-1:id+2], 'nextTopic':nextTopic, 'textContent':textContent, 'previousTopic':previousTopic, 'previousText':previousText})
+
+class CSSInfo(ListView):
+
+    def get(self, request, id):
+        infor = CSSBlogsModel.objects.get(id=id)
+        data = CSSTopicModel.objects.filter(id=id)
+
+        remainingTopics = CSSBlogsModel.objects.exclude(id=id)
+        # print(remainingTopics[0].id)
+        # print(id)
+
+        nextTopic = CSSBlogsModel.objects.filter(id=id+1).first()
+        textContent = 'Next'
+
+        if not nextTopic:
+            nextTopic = CSSBlogsModel.objects.filter(id=id+2).first()
+        if not nextTopic:
+            textContent = 'Completed'
+
+
+        previousTopic = CSSBlogsModel.objects.filter(id=id-1).first()
+        previousText = 'Previous'
+
+        if not previousTopic:
+            previousTopic = CSSBlogsModel.objects.filter(id=id-2).first()
         if not previousTopic:
             previousText = ''
 
