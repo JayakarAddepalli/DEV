@@ -15,6 +15,8 @@ from django.db.models import Q
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # import redis
 
@@ -121,7 +123,7 @@ class CategoryBlogs(ListView):
         data = model.objects.all() if model else None
         return render(request, template, {'data':data})
         
-    
+@method_decorator(login_required(login_url='APP:login'), name='dispatch')
 class Info(ListView):
 
     def get(self, request, id):
@@ -168,7 +170,7 @@ class Info(ListView):
 
         return render(request, 'infor.html', {'infor': infor, 'd': filtered_lines, 'headers': headers, 'remainingTopics':remainingTopics[id-1:id+2], 'nextTopic':nextTopic, 'textContent':textContent, 'previousTopic':previousTopic, 'previousText':previousText})
     
-
+@method_decorator(login_required(login_url='APP:login'), name='dispatch')
 class HTMLInfo(ListView):
 
     def get(self, request, id):
@@ -215,6 +217,7 @@ class HTMLInfo(ListView):
 
         return render(request, 'infor.html', {'infor': infor, 'd': filtered_lines, 'headers': headers, 'remainingTopics':remainingTopics[id-1:id+2], 'nextTopic':nextTopic, 'textContent':textContent, 'previousTopic':previousTopic, 'previousText':previousText})
 
+@method_decorator(login_required(login_url='APP:login'), name='dispatch')
 class CSSInfo(ListView):
 
     def get(self, request, id):

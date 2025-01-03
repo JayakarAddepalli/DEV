@@ -333,7 +333,13 @@
             </div>
             <div>
                 {% if user.is_authenticated %}
-                    <span style="width: auto; font-size: 20px; text-align: center; align-content: center; padding: 10px; background-color: transparent;">Hi {{user.username}}</span>
+                    <span style="display: inline-block; 
+                                font-size: 15px; 
+                                text-align: center; 
+                                padding: 7.5px 10px ;  background-color:rgb(41, 109, 255); 
+                                color: white; 
+                                border-radius: 8px;
+                                font-family: 'Arial', sans-serif;">Hi, {{user.username}}</span>
                     <a href="{% url 'APP:logout' %}" class="btn btn-danger">Logout</a>
                 {% else %}
                     <a href="{% url 'APP:login' %}" class="btn btn-primary">Login</a>
