@@ -21,9 +21,17 @@ class htmlBlogsAdmin(admin.ModelAdmin):
 class htmltopics_ModelAdmin(admin.ModelAdmin):
     list_display = ('content',)
 
+class cssBlogsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'topics', 'description')
+
+class csstopics_ModelAdmin(admin.ModelAdmin):
+    list_display = ('content',)
+
 admin.site.register(homeModel, homeModelAdmin)
 admin.site.register(hashTagsModel, hashTagsModelAdmin)
 admin.site.register(PythonBlogsModel, pythonBlogsAdmin)
 admin.site.register(TopicModel, topics_ModelAdmin)
 admin.site.register(HTMLBlogsModel, htmlBlogsAdmin)
 admin.site.register(HTMLTopicModel, htmltopics_ModelAdmin)
+admin.site.register(CSSBlogsModel, cssBlogsAdmin)
+admin.site.register(CSSTopicModel, csstopics_ModelAdmin)
