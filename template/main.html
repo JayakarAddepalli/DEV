@@ -19,7 +19,8 @@
             padding: 0px;
             max-width: 100%;
             font-family: "Nunito Sans", sans-serif;
-            background-color: rgb(241, 241, 241);
+            color:white;
+            background-color: rgb(12, 14, 24);
             user-select: none;
             scroll-behavior: smooth;
         }
@@ -27,7 +28,6 @@
             width: 18%;
         }
         .sideheaders{
-            background-color: white;
             width: 100%;
             border: none;
             border-radius: 10px;
@@ -63,7 +63,6 @@
         }
 
         .sideheaders2{
-            background-color: white;
             width: 100%;
             height: fit-content;
             position: sticky;
@@ -73,6 +72,15 @@
             border-radius: 10px;
             box-shadow: 0px 0px 1px grey;
         }
+
+        .sideheaders2 h1{
+            color:white !important;
+        }
+
+        .sideheaders2 p{
+            color:rgb(100, 100, 100) !important;
+        }
+        
         .anchors{
             display: block;
             background-color: transparent;
@@ -94,13 +102,16 @@
         code{
             user-select:text;
         }
+        
         nav{
             max-width: 100%;
             height: 8vh;
             padding:0px 50px;
             /* background-color: red; */
-            background-color: white;
-            box-shadow: 0px 1px 1px rgb(0, 0, 0);
+            border:solid 0.1px;
+            border-color:transparent;
+            border-bottom-color:rgba(42, 42, 42, 0.64);
+            background-color: #0c0e18;
         }
         .logo{
             max-width: 3rem;
@@ -159,11 +170,25 @@
         .hashtags{
             background-color: white;
             padding: 5px 15px;
-            font-size: 15px;
+            font-size: 13px;
             border: solid 1px transparent;
-            border-radius: 12px;
+            border-radius: 15px;
+            font-weight:bold;
+            color:#4493F8;
+            background-color: #388BFD1A;
             box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.295);
             cursor: pointer;
+        }
+
+
+        .mainHeader>a{
+            text-decoration:none;
+        }
+
+        .hashtags:hover{
+            transition:all 0.2s;
+            color:white;
+            background-color:#4493F8;
         }
 
         .copy-btn{
@@ -258,7 +283,9 @@
         .footerPart{
             height: 10vh;
             margin-top: 5vh;
-            background-color: rgb(255, 255, 255);
+            color:white;
+            background-color: rgb(12, 14, 24);
+            box-shadow:0px 8px 10px white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -310,13 +337,13 @@
 
         /* Html page styles*/
         .htmlTables{
-            border:solid 1px black;
+            border:solid 1px;
             
         }
 
         .htmlTables th, .htmlTables td{
             padding: 10px 20px;
-            border:solid 1px black;
+            border:solid 1px;
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -329,7 +356,7 @@
     <header>
         <nav class="d-flex justify-content-between align-items-center">
             <div>
-                <img src="{% static 'DevLogo.png' %}" alt="" class="logo">
+                <img src="{% static 'DEV.png' %}" alt="" class="logo">
             </div>
             <div>
                 {% if user.is_authenticated %}
@@ -338,8 +365,8 @@
                                 text-align: center; 
                                 padding: 7.5px 10px ;  background-color:rgb(41, 109, 255); 
                                 color: white; 
-                                border-radius: 8px;
-                                font-family: 'Arial', sans-serif;">Hi, {{user.username}}</span>
+                                border-radius: 5px;
+                                font-family: 'Arial', sans-serif;">👋 {{user.username}}</span>
                     <a href="{% url 'APP:logout' %}" class="btn btn-danger">Logout</a>
                 {% else %}
                     <a href="{% url 'APP:login' %}" class="btn btn-primary">Login</a>
