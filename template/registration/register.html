@@ -3,7 +3,9 @@
 {% block body %}
 <form method="post" enctype="multipart/form-data" class="w-50 mx-auto">
     {% csrf_token %}
+    <br><br>
     <h1 class="mb-3">Register</h1>
+    <br>
     {% if messages %}
         {% for i in messages %}
             <div class="alert alert-danger">
