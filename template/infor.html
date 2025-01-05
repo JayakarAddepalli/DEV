@@ -2,6 +2,28 @@
 
 {% block head %}
 {% load static %}
+<style>
+    .sideheaders2>div>div>a{
+        border:none;
+        border-radius: 50%;
+        background-color:white;
+        width: 30px;
+        height: 30px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .profiles>img{
+        width:80%;
+        height:80%;
+    }
+
+    .sideheaders2>div>div>a+a+a>img{
+        width:70%;
+        height:70%;
+    }
+</style>
 {% endblock head %}
 {% block body %}
 <div class="d-flex justify-content-between">
@@ -70,17 +92,12 @@
         </div>
     </div>
 </div>
-<footer class="footerPart">
-    <span style="background-color: transparent;">&copy; JayakarAddepalli <span id="updateDate" style="background-color: transparent;"></span></span>
-</footer>
 <script>
 
     // window.addEventListener('scroll',()=>{
             
     // })
 
-    const date = new Date()
-    document.getElementById('updateDate').textContent = date.getFullYear()
 
     function copyToClipboard(id, button){
         const code = document.getElementById(id).innerText;

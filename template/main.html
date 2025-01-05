@@ -24,6 +24,34 @@
             user-select: none;
             scroll-behavior: smooth;
         }
+        body{
+            background-color: rgb(12, 14, 24);
+        }
+        form{
+            height:100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+          }
+          
+          /* Track */
+          ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 10px;
+          }
+           
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background:rgba(255, 255, 255, 0.48);
+            border-radius: 10px;
+          }
+          
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background:rgba(168, 168, 168, 0.48);
+          }
+
         .mainsubhead{
             width: 18%;
         }
@@ -252,10 +280,6 @@
             align-items: center;
         }
 
-        .profiles>img{
-            width: 30px;
-            height: 30px;
-        }
 
         .writer{
             position: absolute;
@@ -270,7 +294,8 @@
         .card-header{
             display: flex;
             justify-content: space-between;
-            align-items: center;   
+            align-items: center;
+            font-size: 13px;
             border-top-left-radius: 10px !important;
             border-top-right-radius: 10px !important;
         }
@@ -282,7 +307,7 @@
 
         .footerPart{
             height: 10vh;
-            margin-top: 5vh;
+            margin-top:10px;
             color:white;
             background-color: rgb(12, 14, 24);
             box-shadow:0px 8px 10px white;
@@ -296,8 +321,10 @@
         }
 
         #previousbutton{
+            width:45%;
             position: sticky;
-            top: 80%;
+            top: 85%;
+            left: 100%;
         }
 
 
@@ -370,7 +397,7 @@
                     <a href="{% url 'APP:logout' %}" class="btn btn-danger">Logout</a>
                 {% else %}
                     <a href="{% url 'APP:login' %}" class="btn btn-primary">Login</a>
-                    <a href="{% url 'APP:register' %}" class="btn btn-secondary-subtle">Create Account</a>
+                    <a href="{% url 'APP:register' %}" class="btn btn-success">Create Account</a>
                 {% endif %}
                 
             </div>
@@ -386,5 +413,14 @@
         {% endblock body %}
 
     </main>
+
+    <footer class="footerPart">
+        <span style="background-color: transparent;">&copy; JayakarAddepalli <span id="updateDate" style="background-color: transparent;"></span></span>
+    </footer>
+
+    <script>
+        const date = new Date()
+        document.getElementById('updateDate').textContent = date.getFullYear()
+    </script>
 </body>
 </html>
