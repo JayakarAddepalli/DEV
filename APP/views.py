@@ -107,9 +107,7 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs: reverse_lazy):
         context = super().get_context_data(**kwargs)
-
         context['hashes'] = hashTagsModel.objects.all()
-
         return context
 
 # ===== Category =====
