@@ -17,6 +17,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 
 # import redis
 
@@ -85,10 +86,19 @@ class LoginView(LoginView):
 
 
 # ==== Logout ====
-
+@method_decorator(never_cache, name='dispatch')
 class LogoutView(LogoutView):
     template_name = 'registration/logout.html'
     success_url = reverse_lazy('APP:login')
+
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        request.session.flush()  # Clear the session data
+        response.delete_cookie('sessionid')  # Delete the session cookie
+        response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response['Pragma'] = 'no-cache'
+        response['Expires'] = '0'
+        return response
 
 class HomeView(ListView):
     model = homeModel
@@ -131,9 +141,6 @@ class Info(ListView):
         data = TopicModel.objects.filter(id=id)
 
         remainingTopics = PythonBlogsModel.objects.exclude(id=id)
-        # print(remainingTopics[0].id)
-        # print(id)
-
         nextTopic = PythonBlogsModel.objects.filter(id=id+1).first()
         textContent = 'Next'
 
