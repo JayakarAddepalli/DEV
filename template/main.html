@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load bootstrap5 %}
+    {% load django_bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% load static %}
@@ -394,7 +394,10 @@
                                 color: white; 
                                 border-radius: 5px;
                                 font-family: 'Arial', sans-serif;">👋 {{user.username}}</span>
-                    <a href="{% url 'APP:logout' %}" class="btn btn-danger">Logout</a>
+                                <form id="logout-form" action="{% url 'APP:logout' %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
                 {% else %}
                     <a href="{% url 'APP:login' %}" class="btn btn-primary">Login</a>
                     <a href="{% url 'APP:register' %}" class="btn btn-success">Create Account</a>
