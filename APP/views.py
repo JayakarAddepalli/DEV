@@ -18,6 +18,7 @@ from email.mime.multipart import MIMEMultipart
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from .apiService import *
 
 # import redis
 
@@ -135,6 +136,9 @@ class CategoryBlogs(ListView):
 class Info(ListView):
 
     def get(self, request, id):
+
+        # api_service =  AuthAPIService(request, id)
+        # print(api_service.is_authenticated)
         infor = PythonBlogsModel.objects.get(id=id)
         data = TopicModel.objects.filter(id=id)
 
