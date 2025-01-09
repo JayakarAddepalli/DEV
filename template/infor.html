@@ -23,7 +23,30 @@
         width:70%;
         height:70%;
     }
+
+    .CodeMirror {
+        border: 1px solid #ccc;
+        height: auto;
+    }
+    iframe {
+        width: 100%;
+        height: 300px;
+        border: 1px solid white;
+        background-color: white;
+    }
+    button {
+        margin: 10px 0;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    #editor {
+        height: 300px; /* Adjust height as needed */
+        width: 100%;
+    }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
 {% endblock head %}
 {% block body %}
 <div class="d-flex justify-content-between">
@@ -158,6 +181,25 @@
 
     })
 
+    const editorElement = document.getElementById('editor');
+    const initialCode = editorElement.textContent.trim(); // Fetch existing code inside the div
+    editorElement.innerHTML = ""; // Clear the original content to avoid duplication
+
+    const editor = CodeMirror(editorElement, {
+        mode: 'xml',
+        lineNumbers: true,
+        theme: 'default',
+        value: initialCode, // Set the initial content in the CodeMirror editor
+    });
+
+    function runCode() {
+        const htmlCode = editor.getValue();
+        const output = document.getElementById('output').contentWindow.document;
+    
+        output.open();
+        output.write(htmlCode);
+        output.close();
+    }
     
 </script>
 {% endblock body %}
