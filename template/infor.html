@@ -3,6 +3,9 @@
 {% block head %}
 {% load static %}
 <style>
+    *{
+        box-sizing: border-box;
+    }
     .sideheaders2>div>div>a{
         border:none;
         border-radius: 50%;
@@ -25,19 +28,46 @@
     }
 
     .CodeMirror {
-        border: 1px solid #ccc;
         height: auto;
     }
+
+    .CodeMirror-cursors{
+        background-color: white;
+    }  
+
+    .CodeMirror-code div pre>span>span::selection{
+        background-color:white;
+        color: black;
+    }
+
     iframe {
         width: 100%;
         height: 300px;
-        border: 1px solid white;
         background-color: white;
     }
-    button {
+    .runbutton {
         margin: 10px 0;
         padding: 10px 20px;
-        font-size: 16px;
+        font-size: 13px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background-color:rgb(2, 149, 31);
+        animation: highlight 1s infinite alternate;
+    } 
+
+    @keyframes highlight {
+        from{
+            background-color: rgb(2, 149, 31);
+            color: white;
+            transform: scale(1);
+        }
+        to{
+            background-color:rgb(0, 255, 51);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px rgb(0, 255, 51);
+        }
     }
     #editor {
         height: 300px; /* Adjust height as needed */
@@ -181,23 +211,34 @@
 
     })
 
-    const editorElement = document.getElementById('editor');
-    const initialCode = editorElement.textContent.trim(); // Fetch existing code inside the div
-    editorElement.innerHTML = ""; // Clear the original content to avoid duplication
+    const editors = {};
 
-    const editor = CodeMirror(editorElement, {
-        mode: 'xml',
-        lineNumbers: true,
-        theme: 'default',
-        value: initialCode, // Set the initial content in the CodeMirror editor
+    function decodeHTMLEntities(text) {
+        const textarea = document.createElement('textarea');
+        textarea.innerHTML = text;
+        return textarea.value;
+    }
+
+    document.querySelectorAll('[id^="editor"]').forEach(editorElement => {
+        const initialCode = decodeHTMLEntities(editorElement.textContent.trim()); // Fetch existing code inside the div
+        editorElement.innerHTML = ""; // Clear the original content to avoid duplication
+
+        editors[editorElement.id] = CodeMirror(editorElement, {
+            mode: 'xml',
+            lineNumbers: true,
+            theme: 'default',
+            value: initialCode, // Set the initial content in the CodeMirror editor
+        });
     });
+    
 
-    function runCode() {
+    function runCode(editordataid, outputid) {
+        const editor = editors[editordataid];
         const htmlCode = editor.getValue();
-        const output = document.getElementById('output').contentWindow.document;
+        const output = document.getElementById(outputid).contentWindow.document;
     
         output.open();
-        output.write(htmlCode);
+        output.write(`<!DOCTYPE html>${htmlCode}`);
         output.close();
     }
     
