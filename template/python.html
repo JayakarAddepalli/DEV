@@ -8,9 +8,9 @@
     <div class="w-50 mx-auto">
         <div class="accordion" id="accordionExample">
             {% for i in data %}
-                <div class="accordion-item">
+                <div class="accordion-item" style="background-color:#151b23; border:solid 1px; border-radius:5px;">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if not i.id == 1 %}collapsed{% endif %}" style="background-color:#151b23;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{i.id}}" aria-expanded="{% if i.id == 1 %}true{% else %}false{% endif %}" aria-controls="collapse{{i.id}}">
+                        <button class="accordion-button {% if not i.id == 1 %}collapsed{% endif %}" style="background-color:#151b23; border: solid 0px; border-radius:5px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{i.id}}" aria-expanded="{% if i.id == 1 %}true{% else %}false{% endif %}" aria-controls="collapse{{i.id}}">
                             <b class="bg-transparent" style="color:#4493F8">{{i.topics}}</b>
                         </button>
                     </h2>

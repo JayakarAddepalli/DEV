@@ -26,17 +26,36 @@
         width:70%;
         height:70%;
     }
-
+        
     .CodeMirror {
         height: auto;
+    }
+
+    .card-body{
+        height:fit-content;
+    }
+
+    .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+        background:none;
+        border: none;
+    }
+    .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+        background:rgba(255, 255, 255, 0.48);
+    }
+    .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(168, 168, 168, 0.48);
     }
 
     .CodeMirror-cursors{
         background-color: white;
     }  
 
-    .CodeMirror-code div pre>span>span::selection{
-        background-color:white;
+    .CodeMirror-code div pre>span, .CodeMirror-code div pre>span>span{
+        background-color:transparent;
+    }
+    
+    .CodeMirror-line>span::selection{
+        background-color:green;
         color: black;
     }
 
