@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from django.urls import reverse_lazy
+import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,14 +92,27 @@ WSGI_APPLICATION = 'DEV.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mydatabase_dev_page',
+#         'USER': 'mydatabase_dev_page_user',
+#         'PASSWORD': 'TdS7jq0pnGHBOmjZFMnrK4COb2z9Bn2u',
+#         'HOST': 'dpg-cucbc6lds78s73c0uvtg-a',
+#         'PORT': '5432',
+#     }
+# }
+
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase_dev_page',
-        'USER': 'mydatabase_dev_page_user',
-        'PASSWORD': 'TdS7jq0pnGHBOmjZFMnrK4COb2z9Bn2u',
-        'HOST': 'dpg-cucbc6lds78s73c0uvtg-a',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydatabase',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
