@@ -109,10 +109,10 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydatabase',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'if0_38270402_dev_blogs',
+        'USER': 'if0_38270402',
+        'PASSWORD': 'Bannu6928',
+        'HOST': 'sql311.infinityfree.com',
         'PORT': '3306',
     }
 }
